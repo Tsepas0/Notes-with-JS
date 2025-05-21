@@ -44,7 +44,7 @@ const addNote = (text = "", title = "")=>{
             style="color:red">
         </i>
         <i class="trash fas fa-trash"
-            style="color:yellow">
+            style="color:red">
         </i>
     </div>
 
@@ -59,21 +59,38 @@ const addNote = (text = "", title = "")=>{
     </textarea>
     `;
 
-    function handleTrashClick(){
+    function remove (note){
+        console.log("remove function called");
         note.remove();
         saveNotes();
     }
 
-    function handleSaveClick(){
-        saveNotes();
-    }
+    // function handleTrashClick(){
+    //     note.remove();
+    //     saveNotes();
+    // }
+
+    // function handleSaveClick(){
+    //     saveNotes();
+    // }
 
     const delBtn = note.querySelector(".trash");
     const saveButton=note.querySelector(".save");
     const textareas = note.querySelectorAll("textarea");
 
-    delBtn.addEventListener("click", handleTrashClick());
-    saveButton.addEventListener("click", handleSaveClick());
+    // delBtn.addEventListener("click", handleTrashClick());
+    // saveButton.addEventListener("click", handleSaveClick());
+    delBtn.addEventListener("click",()=>{
+        console.log("trash button clicked");
+        remove(note);
+        alert("Mpravo to diegrapses ");
+    });
+    saveButton.addEventListener("click",()=>{
+        console.log("save button clicked");
+        saveNotes();
+        alert("Mpravo to apothikeuses");
+    });
+
     main.appendChild(note);
     saveNotes();
 };
